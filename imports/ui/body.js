@@ -48,8 +48,7 @@ Template.body.events({
 
         // busca o valor a ser inserido no Mongo DB
         const target = event.target;
-        const itemCompra = target.text.value;
-
+        const itemCompra = target.itemCompra.value;
         Meteor.call('lista_compras.insert', itemCompra);
 
         // limpa o formulário
