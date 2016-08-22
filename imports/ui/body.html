@@ -1,0 +1,24 @@
+<body>
+    <div class="container">
+        <header>
+            <h1>Lista de Compras: ({{incompleteCount}})</h1>
+            <label class="hide-completed">
+                <input type="checkbox" />
+                Ocultar produtos comprados
+            </label>
+
+            {{> loginButtons}}
+
+            {{#if currentUser}}
+                <form class="new-produto">
+                    <input type="text" name="text" placeholder="Escreva o nome de um produto" />
+                </form>
+            {{/if}}
+        </header>
+        <ul>
+            {{#each listaCompras}}
+                {{> itemCompra}}
+            {{/each}}
+        </ul>
+    </div>
+</body>

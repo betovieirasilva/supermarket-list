@@ -1,0 +1,18 @@
+<template name="itemCompra">
+    <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
+        {{#if isOwner}}
+            <button class="delete">&times;</button>
+        {{/if}}
+        <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+
+        <button class="toggle-private">
+            {{#if private}}
+                Private
+            {{else}}
+                Public
+            {{/if}}
+        </button>
+
+        <span class="text">{{dataCriacao}} - {{produto}}</span>
+    </li>
+</template>
