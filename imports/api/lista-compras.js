@@ -5,6 +5,8 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
+import { Produtos } from './produtos.js';
+
 export const ListaCompras = new Mongo.Collection('lista_compras');
 
 
@@ -29,6 +31,9 @@ Meteor.methods({
             usuarioId: this.userId,
             comprado: false
         });
+
+        //mantém a lista de produtos
+        Meteor.call('produtos.insertIfNotExists', nomeProduto);
     },
     'lista_compras.remove'(listaComprasId) {
         check(listaComprasId, String);
