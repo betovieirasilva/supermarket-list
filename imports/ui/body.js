@@ -31,9 +31,14 @@ Template.body.onCreated(function bodyOnCreated() {
 Template.body.helpers({
     listaCompras() {
 
+        //retorna a lista de compras apenas com os produtos que ainda não foram comprados
+        const instance = Template.instance();
+        if (instance.state.get('ocultarProdutosComprados')) {
+            return ListaCompras.find({ comprado: { $ne: true } }, { sort: { produto: 1 } });//1 ASC, -1 DESC
+        }
+
         //retorna a lista de compras completa
-        //return ListaCompras.find({}, { sort: { produto: -1 } });
-        return ListaCompras.find({});
+        return ListaCompras.find({}, { sort: { produto: 1 } });//1 ASC, -1 DESC
     },
     numeroItemsComprados() {
         return ListaCompras.find({ comprado: { $ne: true } }).count();
@@ -55,7 +60,7 @@ Template.body.events({
         // limpa o formulário
         target.itemCompra.value = '';
     },
-    //'change .hide-completed input'(event, instance) {
-    //    instance.state.set('hideCompleted', event.target.checked);
-    //},
+    'change .hide-items-comprados input'(event, instance) {
+        instance.state.set('ocultarProdutosComprados', event.target.checked);
+    },
 });
