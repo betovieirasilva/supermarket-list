@@ -32,7 +32,8 @@ Meteor.methods({
         ListaCompras.insert({
             produto: text,
             dataCriacao: new Date(),
-            usuarioId: this.userId
+            usuarioId: this.userId,
+            comprado: false
         });
     },
     'lista_compras.remove'(listaComprasId) {

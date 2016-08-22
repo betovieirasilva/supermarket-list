@@ -34,8 +34,11 @@ Template.body.helpers({
         //retorna a lista de compras completa
         return ListaCompras.find({}, { sort: { produto: -1 } });
     },
-    incompleteCount() {
-        return 0;//Tasks.find({ checked: { $ne: true } }).count();
+    listaComprasCount() {
+        return ListaCompras.find({ comprado: { $ne: true } }).count();
+    },
+    numeroItemsListaCompras() {
+        return ListaCompras.find({}).count();
     },
 });
 
