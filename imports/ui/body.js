@@ -52,7 +52,7 @@ Template.body.events({
         Meteor.call('lista_compras.insert', itemCompra);
 
         // limpa o formulário
-        target.text.value = '';
+        target.itemCompra.value = '';
     },
     //'change .hide-completed input'(event, instance) {
     //    instance.state.set('hideCompleted', event.target.checked);
