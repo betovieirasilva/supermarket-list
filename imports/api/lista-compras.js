@@ -16,16 +16,15 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-    'lista_compras.insert'(text) {
-        check(text, String);
+    'lista_compras.insert'(nomeProduto) {
+        check(nomeProduto, String);
 
         if (! this.userId) {
             throw new Meteor.Error('not-authorized');
         }
 
-    console.log('INSERT: ' + text);
         ListaCompras.insert({
-            text,
+            produto: nomeProduto,
             dataCriacao: new Date(),
             usuarioId: this.userId,
             comprado: false

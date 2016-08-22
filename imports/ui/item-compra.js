@@ -12,14 +12,10 @@ Template.itemCompra.helpers({
 });
 
 Template.itemCompra.events({
-    'click .toggle-checked'() {
-    // Set the checked property to the opposite of its current value
-    Meteor.call('lista_compras.marcarComoComprado', this._id, !this.checked);
-    },
     'click .delete'() {
         Meteor.call('lista_compras.remove', this._id);
     },
-    //'click .toggle-private'() {
-    //    Meteor.call('tasks.setPrivate', this._id, !this.private);
-    //},
+    'click .toggle-comprar'() {
+        Meteor.call('lista_compras.marcarComoComprado', this._id, !this.comprado);
+    },
 });
