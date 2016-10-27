@@ -17,15 +17,19 @@ import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { ListaCompras } from '../api/lista-compras.js';//Dados a serem persistidos no Mongo DB
+import { Produtos } from '../api/produtos.js';//Dados a serem persistidos no Mongo DB
 
 import './item-compra.js';
+import './produto.js';
 
 //Aqui você diz qual é o HTML que o JS será utilizado
 import './body.html';
 
 Template.body.onCreated(function bodyOnCreated() {
     this.state = new ReactiveDict();
+    //sem o subscribe os dados não são publicados para o cliente
     Meteor.subscribe('lista_compras');
+    Meteor.subscribe('produtos');
 });
 
 Template.body.helpers({
@@ -45,6 +49,10 @@ Template.body.helpers({
     },
     numeroItemsListaCompras() {
         return ListaCompras.find({}).count();
+    },
+
+    listaProdutos() {
+        return Produtos.find({}, { sort: { nome: 1 } });//1 ASC, -1 DESC
     },
 });
 

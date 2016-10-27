@@ -23,9 +23,10 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        //insere apenas se não existe
-        const produto = Produtos.find({ produto: nomeProduto });
-        if (produto.nome !== nomeProduto) {
+
+        const produtoList = Produtos.find({nome : nomeProduto}).fetch();//retorna um vetor
+
+        if (produtoList != null && produtoList.length === 0) {
             Produtos.insert({
                 nome: nomeProduto,
                 usuarioId: this.userId

@@ -25,6 +25,9 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
+        const teste = ListaCompras.find({ produto: nomeProduto });
+        console.log('ProdLista: ' + teste);
+
         ListaCompras.insert({
             produto: nomeProduto,
             dataCriacao: new Date(),
