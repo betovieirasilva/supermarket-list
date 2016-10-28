@@ -16,59 +16,50 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
-import { ListaCompras } from '../api/lista-compras.js';//Dados a serem persistidos no Mongo DB
-import { Produtos } from '../api/produtos.js';//Dados a serem persistidos no Mongo DB
-
-import './item-compra.js';
-import './produto.js';
+//import './dados.js';
+import './lista.js';
 
 //Aqui você diz qual é o HTML que o JS será utilizado
 import './body.html';
 
-Template.body.onCreated(function bodyOnCreated() {
+Template.myForm.onCreated(function listaOnCreated() {
     this.state = new ReactiveDict();
-    //sem o subscribe os dados não são publicados para o cliente
-    Meteor.subscribe('lista_compras');
-    Meteor.subscribe('produtos');
+    this.state.set('currentMenu', 'produto');//defaul menu
 });
 
-Template.body.helpers({
-    listaCompras() {
+Template.myForm.helpers({
 
-        //retorna a lista de compras apenas com os produtos que ainda não foram comprados
+    currentMenuProduto : function() {
         const instance = Template.instance();
-        if (instance.state.get('ocultarProdutosComprados')) {
-            return ListaCompras.find({ comprado: { $ne: true } }, { sort: { produto: 1 } });//1 ASC, -1 DESC
+        if (instance.state.get('currentMenu') === 'produto'){
+            return true;
         }
-
-        //retorna a lista de compras completa
-        return ListaCompras.find({}, { sort: { produto: 1 } });//1 ASC, -1 DESC
+        return false;
     },
-    numeroItemsComprados() {
-        return ListaCompras.find({ comprado: { $ne: true } }).count();
+    currentMenuLista : function() {
+        const instance = Template.instance();
+        if (instance.state.get('currentMenu') === 'lista'){
+            return true;
+        }
+        return false;
     },
-    numeroItemsListaCompras() {
-        return ListaCompras.find({}).count();
-    },
-
-    listaProdutos() {
-        return Produtos.find({}, { sort: { nome: 1 } });//1 ASC, -1 DESC
+    currentMenuRelatorio : function() {
+        const instance = Template.instance();
+        if (instance.state.get('currentMenu') === 'relatorio'){
+            return true;
+        }
+        return false;
     },
 });
 
-Template.body.events({
-    'submit .new-produto'(event) {
-        event.preventDefault();// Prevent default browser form submit
-
-        // busca o valor a ser inserido no Mongo DB
-        const target = event.target;
-        const itemCompra = target.itemCompra.value;
-        Meteor.call('lista_compras.insert', itemCompra);
-
-        // limpa o formulário
-        target.itemCompra.value = '';
+Template.myForm.events({
+    'click #menu-produto'(){
+        Template.instance().state.set('currentMenu', 'produto');
     },
-    'change .hide-items-comprados input'(event, instance) {
-        instance.state.set('ocultarProdutosComprados', event.target.checked);
+    'click #menu-lista'(){
+        Template.instance().state.set('currentMenu', 'lista');
+    },
+    'click #menu-relatorio'(){
+        Template.instance().state.set('currentMenu', 'relatorio');
     },
 });

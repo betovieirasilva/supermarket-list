@@ -1,36 +1,38 @@
 <body>
+    {{> myForm}}
+</body>
+
+<template name="myForm">
     <div class="container">
-        <header>
-            <h1>Quantidade de itens: ({{numeroItemsListaCompras}})</h1><br />
-            <h1>Items comprados: ({{numeroItemsComprados}})</h1>
+        {{> loginButtons}}
 
-            <label class="hide-items-comprados">
-                <input type="checkbox" />
-                Ocultar produtos comprados
-            </label>
+        {{#if currentUser}}
+        <form>
+            <ul class="nav nav-pills">
+                <li role="presentation" class="{{#if currentMenuProduto}}active{{/if}}" id="menu-produto"><a href="#">Produtos</a></li>
+                <li role="presentation" class="{{#if currentMenuLista}}active{{/if}}" id="menu-lista"><a href="#">Lista</a></li>
+                <li role="presentation" class="{{#if currentMenuRelatorio}}active{{/if}}" id="menu-relatorio"><a href="#">Relatórios</a></li>
+            </ul>
+            <br />
+            <br />
+            <br />
 
-            {{> loginButtons}}
 
-            {{#if currentUser}}
-                <form class="new-produto">
-                    <input type="text" name="itemCompra" placeholder="Escreva o nome de um produto" />
-                </form>
+            <br />
+            {{#if currentMenuProduto}}
+                PRODUTO ok
             {{/if}}
-        </header>
-        <ul>
-            {{#each listaCompras}}
-                {{> itemCompra}}
-            {{/each}}
-        </ul>
+            {{#if currentMenuLista}}
+                {{> lista}}
+            {{/if}}
+            {{#if currentMenuRelatorio}}
+                Relatório ok
+            {{/if}}
+        </form>
+        {{/if}}
 
-        <br /><br />
-        Lista de Produtos
-        <br />
-        <ul>
-            {{#each listaProdutos}}
-                {{> produto}}
-            {{/each}}
-        </ul>
+        <!--{{> dados}}-->
 
     </div>
-</body>
+</template>
+

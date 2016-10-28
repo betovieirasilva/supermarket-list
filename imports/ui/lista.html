@@ -1,0 +1,35 @@
+<template name="lista">
+    <!--<header>-->
+        <h1>Quantidade de itens: ({{numeroItemsListaCompras}})</h1><br />
+        <h1>Items comprados: ({{numeroItemsComprados}})</h1>
+
+        <label class="hide-items-comprados">
+            <input type="checkbox" />
+            Ocultar produtos comprados
+        </label>
+
+        <!--{{> loginButtons}}-->
+
+        {{#if currentUser}}
+        <form class="new-produto">
+            <input type="text" name="itemCompra" placeholder="Escreva o nome de um produto" />
+        </form>
+        {{/if}}
+    <!--</header>-->
+    <ul>
+        {{#each listaCompras}}
+        {{> itemCompra}}
+        {{/each}}
+    </ul>
+
+    <br /><br />
+    Lista de Produtos
+    <br />
+    <ul>
+        {{#each listaProdutos}}
+        {{> produto}}
+        {{/each}}
+    </ul>
+</template>
+
+
