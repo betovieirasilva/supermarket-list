@@ -18,6 +18,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 //import './dados.js';
 import './lista.js';
+import './produto.js';
 
 //Aqui você diz qual é o HTML que o JS será utilizado
 import './body.html';

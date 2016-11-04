@@ -5,16 +5,26 @@ import { Produtos } from '../api/produtos.js';//Dados a serem persistidos no Mon
 
 import './produto.html';
 
-Template.produto.helpers({
-    isOwner() {
-        return this.usuarioId === Meteor.userId();
+
+Template.listaProdutos.onCreated(function listaOnCreated() {
+    Meteor.subscribe('produtos');
+});
+
+Template.listaProdutos.helpers({
+    listaProdutos() {
+        return Produtos.find({}, { sort: { nome: 1 } });//1 ASC, -1 DESC
     },
+});
+
+Template.listaProdutos.events({
+
+});
+
+Template.produto.helpers({
 });
 
 Template.produto.events({
     'click .delete-produto'() {
         Meteor.call('produtos.remove', this._id);
     },
-
-
 });
