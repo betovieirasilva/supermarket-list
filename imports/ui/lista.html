@@ -1,26 +1,82 @@
 <template name="lista">
-    <h1>Quantidade de itens: ({{numeroItemsListaCompras}})</h1><br />
-    <h1>Items comprados: ({{numeroItemsComprados}})</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Lista do Supermercado
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
 
-    {{#if currentUser}}
-        <form class="new-produto">
-            <div class="input-group input-group-lg">
-                <span class="input-group-addon" id="basic-addon1">Produto</span>
-                <input type="text" name="itemCompra" class="form-control" placeholder="Escreva o nome de um produto" aria-describedby="basic-addon1">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <span class="text">Quantidade de Items na Lista</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <span class="text">{{numeroItemsListaCompras}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <span class="text">Items comprados</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <span class="text">{{numeroItemsComprados}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <span class="text">Ocultar items comprados</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="hide-items-comprados">
+                                        <input type="checkbox" />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        {{#if currentUser}}
+                            <form class="new-produto">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Produto
+                                            </label>
+                                            <input type="text" name="itemCompra" id="itemCompra" class="form-control" placeholder="Escreva o nome de um produto">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-default">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        {{/if}}
+                        <ul>
+                            {{#each listaCompras}}
+                                {{> itemCompra}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </form>
-    {{/if}}
+        </div>
+    </div>
 
-    <label class="hide-items-comprados">
-        <input type="checkbox" />
-        Ocultar produtos comprados
-    </label>
 
-    <ul>
-        {{#each listaCompras}}
-            {{> itemCompra}}
-        {{/each}}
-    </ul>
 </template>
 
 

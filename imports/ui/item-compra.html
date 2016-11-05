@@ -1,21 +1,23 @@
 <template name="itemCompra">
-    <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
-        <button class="toggle-comprar btn btn-default">
-            {{#if comprado}}
-                <!--Retirar do Carrinho-->
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            {{else}}
-                <!--Comprar-->
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-            {{/if}}
-        </button>
-
-        <span class="text">{{produto}}</span>
-
-        {{#if isOwner}}
-            <button class="delete btn btn-default">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="form-group">
+                <span class="text">{{produto}}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button class="toggle-comprar btn btn-default">
+                {{#if comprado}}
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                {{else}}
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                {{/if}}
             </button>
-        {{/if}}
-    </li>
+            {{#if isOwner}}
+                <button class="delete btn btn-default">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+            {{/if}}
+        </div>
+    </div>
 </template>
