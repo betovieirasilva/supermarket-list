@@ -42,4 +42,12 @@ Meteor.methods({
 
         Produtos.remove(produtoId);
     },
+    'produtos.incluirLista'(nomeProduto) {
+
+        if (! this.userId) {
+            throw new Meteor.Error('not-authorized');
+        }
+
+        Meteor.call('lista_compras.insert', nomeProduto);
+    },
 });

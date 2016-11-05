@@ -27,4 +27,7 @@ Template.produto.events({
     'click .delete-produto'() {
         Meteor.call('produtos.remove', this._id);
     },
+    'click .incluir-produto-lista'() {
+        Meteor.call('produtos.incluirLista', this.nome);
+    },
 });
