@@ -1,0 +1,35 @@
+<template name="historicoCompras">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Histórico de Compras
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{#each listaHistoricoCompras}}
+                            {{> itemHistorico}}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="itemHistorico">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <span class="text">{{dataCriacao}}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button class="visualizar-historico btn btn-default">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+</template>
+
+

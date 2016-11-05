@@ -19,6 +19,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 //import './dados.js';
 import './lista.js';
 import './produto.js';
+import './historico.js';
 
 //Aqui você diz qual é o HTML que o JS será utilizado
 import './body.html';
@@ -44,9 +45,9 @@ Template.myForm.helpers({
         }
         return false;
     },
-    currentMenuRelatorio : function() {
+    currentMenuHistorico : function() {
         const instance = Template.instance();
-        if (instance.state.get('currentMenu') === 'relatorio'){
+        if (instance.state.get('currentMenu') === 'historico'){
             return true;
         }
         return false;
@@ -60,7 +61,7 @@ Template.myForm.events({
     'click #menu-lista'(){
         Template.instance().state.set('currentMenu', 'lista');
     },
-    'click #menu-relatorio'(){
-        Template.instance().state.set('currentMenu', 'relatorio');
+    'click #menu-historico'(){
+        Template.instance().state.set('currentMenu', 'historico');
     },
 });
