@@ -1,17 +1,33 @@
 <template name="listaProdutos">
-    <h1>Lista de Produtos</h1>
-    <br />
-    <ul>
-        {{#each listaProdutos}}
-            {{> produto}}
-        {{/each}}
-    </ul>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Lista de Produtos
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{#each listaProdutos}}
+                            {{> produto}}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
-
 <template name="produto">
-    <li>
-        <span class="text">{{nome}}</span>
-        <button class="delete-produto">&times;</button>
-    </li>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="form-group">
+                <span class="text">{{nome}}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button class="delete-produto btn btn-default">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
 </template>

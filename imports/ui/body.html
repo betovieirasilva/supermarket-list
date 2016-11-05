@@ -1,10 +1,42 @@
 <body>
+    <div data-role="navigation">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-user"></i>
+                                Gilberto Vieira</a>
+                            <ul class="dropdown-menu dropdown-padding">
+                                <li>
+                                    <p>
+                                        {{> loginButtons}}
+                                    </p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
     {{> myForm}}
+    <footer class="footer">
+        <div class="container text-center">
+            <div>©Supermarket List - Todos os direitos reservados</div>
+        </div>
+    </footer>
 </body>
 
 <template name="myForm">
     <div class="container">
-        {{> loginButtons}}
+
+        <!--<div class="jumbotron">-->
+            <!--<h1>Hello, world!</h1>-->
+            <!--<p>...</p>-->
+            <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>-->
+        <!--</div>-->
 
         {{#if currentUser}}
             <ul class="nav nav-pills">
