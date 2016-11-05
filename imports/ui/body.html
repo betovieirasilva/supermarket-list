@@ -2,6 +2,15 @@
     <div data-role="navigation">
         <nav class="navbar navbar-default">
             <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--<a class="navbar-brand" href="#"> <img src="assets/img/logo.png" width="45" style="width: 45px;"> Sistema Interno</a>-->
+                </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -31,25 +40,12 @@
 
 <template name="myForm">
     <div class="container">
-
-        <!--<div class="jumbotron">-->
-            <!--<h1>Hello, world!</h1>-->
-            <!--<p>...</p>-->
-            <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>-->
-        <!--</div>-->
-
         {{#if currentUser}}
-            <ul class="nav nav-pills">
+            <ul class="nav nav-tabs">
                 <li role="presentation" class="{{#if currentMenuProduto}}active{{/if}}" id="menu-produto"><a href="#">Produtos</a></li>
                 <li role="presentation" class="{{#if currentMenuLista}}active{{/if}}" id="menu-lista"><a href="#">Lista</a></li>
                 <li role="presentation" class="{{#if currentMenuRelatorio}}active{{/if}}" id="menu-relatorio"><a href="#">Relatórios</a></li>
             </ul>
-            <br />
-            <br />
-            <br />
-
-
-            <br />
             {{#if currentMenuProduto}}
                 {{> listaProdutos}}
             {{/if}}

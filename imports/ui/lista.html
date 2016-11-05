@@ -7,38 +7,35 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-12">
-
                         <div class="row">
-                            <div class="col-md-9">
+                            <div class="col-md-5">
                                 <div class="form-group">
-                                    <span class="text">Quantidade de Items na Lista</span>
+                                    <span class="text">Número de Items</span>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <span class="text">Comprados</span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <span class="text">Ocultar</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
                                 <div class="form-group">
                                     <span class="text">{{numeroItemsListaCompras}}</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <span class="text">Items comprados</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-5">
                                 <div class="form-group">
                                     <span class="text">{{numeroItemsComprados}}</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <span class="text">Ocultar items comprados</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label class="hide-items-comprados">
                                         <input type="checkbox" />
@@ -49,15 +46,12 @@
                         {{#if currentUser}}
                             <form class="new-produto">
                                 <div class="row">
-                                    <div class="col-md-9">
+                                    <div class="col-md-10">
                                         <div class="form-group">
-                                            <label class="control-label">
-                                                Produto
-                                            </label>
                                             <input type="text" name="itemCompra" id="itemCompra" class="form-control" placeholder="Escreva o nome de um produto">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <button class="btn btn-default">
                                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                                         </button>
@@ -65,11 +59,22 @@
                                 </div>
                             </form>
                         {{/if}}
-                        <ul>
-                            {{#each listaCompras}}
-                                {{> itemCompra}}
-                            {{/each}}
-                        </ul>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Items
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {{#each listaCompras}}
+                                                {{> itemCompra}}
+                                            {{/each}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
