@@ -32,7 +32,7 @@ Template.lista.helpers({
         return ListaCompras.find({}, { sort: { produto: 1 } });//1 ASC, -1 DESC
     },
     numeroItemsComprados() {
-        return ListaCompras.find({ comprado: { $ne: true } }).count();
+        return ListaCompras.find({ comprado: { $ne: false } }).count();
     },
     numeroItemsListaCompras() {
         return ListaCompras.find({}).count();
