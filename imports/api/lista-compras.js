@@ -6,6 +6,7 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 import { Produtos } from './produtos.js';
+import { HistoricoCompras } from './historico-compras.js';
 
 export const ListaCompras = new Mongo.Collection('lista_compras');
 
@@ -54,4 +55,22 @@ Meteor.methods({
 
         ListaCompras.update(listaComprasId, { $set: { comprado: marcarComoComprado } });
     },
+
+    'lista_compras.fecharLista'() {
+        //busca todos os produtos contidos na lista e faz seu fechamento incluindo no histórico de compras (ultimas compras)
+
+        if (! this.userId) {
+            throw new Meteor.Error('not-authorized');
+        }
+
+        const minhaLista = ListaCompras.find({ usuarioId: this.userId }).fetch();
+
+        Meteor.call('historico_compras.insert', minhaLista);
+
+        //limpa os dados da lista
+        for(var k in minhaLista) {
+            ListaCompras.remove(minhaLista[k]._id);
+        }
+    },
+
 });

@@ -54,4 +54,8 @@ Template.lista.events({
     'change .hide-items-comprados input'(event, instance) {
         instance.state.set('ocultarProdutosComprados', event.target.checked);
     },
+
+    'click .fechar-lista-compra'() {
+        Meteor.call('lista_compras.fecharLista');
+    },
 });
