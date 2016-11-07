@@ -17,7 +17,15 @@ Template.historicoCompras.helpers({
     listaHistoricoCompras() {
         return HistoricoCompras.find({});//1 ASC, -1 DESC
     },
+
+    listaItemsHistoricoComprasSelecionado() {
+        return Template.instance().state.get('atualizarVisualizacaoHistorico');
+    },
+
 });
 
 Template.historicoCompras.events({
+    'click .visualizar-historico'() {
+        Template.instance().state.set('atualizarVisualizacaoHistorico', this.minhaLista);
+    },
 });

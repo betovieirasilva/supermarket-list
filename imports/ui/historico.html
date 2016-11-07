@@ -12,6 +12,23 @@
                         {{/each}}
                     </div>
                 </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Items Comprados</div>
+                                <table class="table">
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th width="10%">Comprado</th>
+                                    </tr>
+                                    {{#each listaItemsHistoricoComprasSelecionado}}
+                                        {{> itemSelecionado}}
+                                    {{/each}}
+                                </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -35,6 +52,13 @@
             </button>
         </div>
     </div>
+</template>
+
+<template name="itemSelecionado">
+    <tr>
+        <td>{{produto}}</td>
+        <td width="10%">{{#if comprado}}<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>{{/if}}</td>
+    </tr>
 </template>
 
 
