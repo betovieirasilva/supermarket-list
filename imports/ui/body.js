@@ -26,7 +26,7 @@ import './body.html';
 
 Template.myForm.onCreated(function listaOnCreated() {
     this.state = new ReactiveDict();
-    this.state.set('currentMenu', 'produto');//defaul menu
+    this.state.set('currentMenu', 'lista');//defaul menu
 });
 
 Template.myForm.helpers({

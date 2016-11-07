@@ -43,15 +43,15 @@
     <div class="container">
         {{#if currentUser}}
             <ul class="nav nav-pills">
-                <li role="presentation" class="{{#if currentMenuProduto}}active{{/if}}" id="menu-produto"><a href="#">Produtos</a></li>
                 <li role="presentation" class="{{#if currentMenuLista}}active{{/if}}" id="menu-lista"><a href="#">Lista</a></li>
+                <li role="presentation" class="{{#if currentMenuProduto}}active{{/if}}" id="menu-produto"><a href="#">Produtos</a></li>
                 <li role="presentation" class="{{#if currentMenuHistorico}}active{{/if}}" id="menu-historico"><a href="#">Últimas Compras</a></li>
             </ul>
-            {{#if currentMenuProduto}}
-                {{> listaProdutos}}
-            {{/if}}
             {{#if currentMenuLista}}
                 {{> lista}}
+            {{/if}}
+            {{#if currentMenuProduto}}
+                {{> listaProdutos}}
             {{/if}}
             {{#if currentMenuHistorico}}
                 {{> historicoCompras}}
