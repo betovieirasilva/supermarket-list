@@ -19,14 +19,19 @@
 
 <template name="itemHistorico">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="form-group">
                 <span class="text">{{formatDate dataCriacao}}</span>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <div class="form-group">
+                <span class="text">{{minhaLista.length}} itens</span>
+            </div>
+        </div>
+        <div class="col-md-2">
             <button class="visualizar-historico btn btn-default">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </button>
         </div>
     </div>
