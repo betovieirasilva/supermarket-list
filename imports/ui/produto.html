@@ -28,10 +28,11 @@
             <button class="delete-produto btn btn-default">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
-            <button class="incluir-produto-lista btn btn-default">
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-            </button>
-
+            {{#if naoExisteListaCompras}}
+                <button class="incluir-produto-lista btn btn-default">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </button>
+            {{/if}}
         </div>
     </div>
 </template>

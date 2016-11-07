@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
 import { Produtos } from '../api/produtos.js';//Dados a serem persistidos no Mongo DB
+import { ListaCompras } from '../api/lista-compras.js';//Dados a serem persistidos no Mongo DB
 
 import './produto.html';
 
@@ -21,6 +22,10 @@ Template.listaProdutos.events({
 });
 
 Template.produto.helpers({
+    naoExisteListaCompras() {
+        const produtoList = ListaCompras.find({produto : this.nome}).fetch();//retorna um vetor
+        return produtoList === null || produtoList.length === 0;
+    },
 });
 
 Template.produto.events({
