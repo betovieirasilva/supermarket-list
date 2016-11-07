@@ -5,27 +5,25 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <div class="row">
-                    <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="row">
                         {{#each listaHistoricoCompras}}
-                            {{> itemHistorico}}
+                        {{> itemHistorico}}
                         {{/each}}
                     </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-md-12">
+                    <hr />
+                    <div class="row">
                         <div class="panel panel-default">
                             <div class="panel-heading">Items Comprados</div>
-                                <table class="table">
-                                    <tr>
-                                        <th>Produto</th>
-                                        <th width="10%">Comprado</th>
-                                    </tr>
-                                    {{#each listaItemsHistoricoComprasSelecionado}}
-                                        {{> itemSelecionado}}
-                                    {{/each}}
-                                </table>
+                            <table class="table" style="margin: 5px">
+                                <tr>
+                                    <th>Produto</th>
+                                    <th width="20%" style="text-align: center;">Comprado</th>
+                                </tr>
+                                {{#each listaItemsHistoricoComprasSelecionado}}
+                                {{> itemSelecionado}}
+                                {{/each}}
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -57,7 +55,7 @@
 <template name="itemSelecionado">
     <tr>
         <td>{{produto}}</td>
-        <td width="10%">{{#if comprado}}<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>{{/if}}</td>
+        <td width="20%" style="text-align: center;">{{#if comprado}}<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>{{/if}}</td>
     </tr>
 </template>
 
