@@ -46,6 +46,7 @@
                 <li role="presentation" class="{{#if currentMenuLista}}active{{/if}}" id="menu-lista"><a href="#">Lista</a></li>
                 <li role="presentation" class="{{#if currentMenuProduto}}active{{/if}}" id="menu-produto"><a href="#">Produtos</a></li>
                 <li role="presentation" class="{{#if currentMenuHistorico}}active{{/if}}" id="menu-historico"><a href="#">Últimas Compras</a></li>
+                <li role="presentation" class="{{#if currentMenuCompartilharUser}}active{{/if}}" id="menu-compartilhar-user"><a href="#">Compartilhar</a></li>
             </ul>
             {{#if currentMenuLista}}
                 {{> lista}}
@@ -55,6 +56,9 @@
             {{/if}}
             {{#if currentMenuHistorico}}
                 {{> historicoCompras}}
+            {{/if}}
+            {{#if currentMenuCompartilharUser}}
+                {{> compartilharUser}}
             {{/if}}
         {{/if}}
     </div>

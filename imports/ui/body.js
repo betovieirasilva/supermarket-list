@@ -20,13 +20,14 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import './lista.js';
 import './produto.js';
 import './historico.js';
+import './compartilhar-user.js';
 
 //Aqui você diz qual é o HTML que o JS será utilizado
 import './body.html';
 
 Template.myForm.onCreated(function listaOnCreated() {
     this.state = new ReactiveDict();
-    this.state.set('currentMenu', 'lista');//defaul menu
+    this.state.set('currentMenu', 'lista');//default menu
 });
 
 Template.myForm.helpers({
@@ -52,6 +53,13 @@ Template.myForm.helpers({
         }
         return false;
     },
+    currentMenuCompartilharUser : function() {
+        const instance = Template.instance();
+        if (instance.state.get('currentMenu') === 'compartilhar-user'){
+            return true;
+        }
+        return false;
+    },
 });
 
 Template.myForm.events({
@@ -63,6 +71,9 @@ Template.myForm.events({
     },
     'click #menu-historico'(){
         Template.instance().state.set('currentMenu', 'historico');
+    },
+    'click #menu-compartilhar-user'(){
+        Template.instance().state.set('currentMenu', 'compartilhar-user');
     },
 });
 
