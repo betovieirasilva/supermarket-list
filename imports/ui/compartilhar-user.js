@@ -5,13 +5,19 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 import './compartilhar-user.html';
 
+import { Usuarios } from '../api/users-list.js';//Dados a serem persistidos no Mongo DB
+
+
+Template.compartilharUser.onCreated(function listaOnCreated() {
+    Meteor.subscribe('usuarios');
+});
 
 Template.compartilharUser.onCreated(function listaOnCreated() {
 });
 
 Template.compartilharUser.helpers({
     listaUsuarios() {
-        return Meteor.users.find({});
+        return Usuarios.find({});
     },
 
 });

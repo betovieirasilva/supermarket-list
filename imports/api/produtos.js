@@ -1,6 +1,3 @@
-/**
- * Created by gilberto on 02/06/16.
- */
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
