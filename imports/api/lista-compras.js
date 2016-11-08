@@ -36,6 +36,32 @@ Meteor.methods({
         //mantém a lista de produtos
         Meteor.call('produtos.insertIfNotExists', nomeProduto);
     },
+
+    'lista_compras.insertByHistorico'(minhaLista) {
+        check(minhaLista, [{
+            _id: String,
+            produto: String,
+            dataCriacao: Date,
+            usuarioId: String,
+            comprado: Boolean
+        }]);
+
+        if (! this.userId) {
+            throw new Meteor.Error('not-authorized');
+        }
+
+        //insere apenas os produtos que ainda não estão na lista
+        for(var k in minhaLista) {
+            const produtoList = ListaCompras.find({produto : minhaLista[k].produto}).fetch();//retorna um vetor
+            if (produtoList === null || produtoList.length === 0){
+                Meteor.call('lista_compras.insert', minhaLista[k].produto);
+            }
+        }
+    },
+
+
+
+
     'lista_compras.remove'(listaComprasId) {
         check(listaComprasId, String);
 

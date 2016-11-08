@@ -14,7 +14,9 @@
                         </div>
                         <div class="col-md-8">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Items Comprados</div>
+                                <div class="panel-heading">
+                                    {{listaItemsHistoricoComprasSelecionado.length}} Itens na Lista
+                                </div>
                                 <table class="table" style="margin: 5px">
                                     <tr>
                                         <th>Produto</th>
@@ -35,13 +37,18 @@
 
 <template name="itemHistorico">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <span class="text">{{formatDate dataCriacao}}</span>
         </div>
-        <div class="col-md-4">
-            <button class="visualizar-historico btn btn-default">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            </button>
+        <div class="col-md-6">
+            <div class="row">
+                <button class="visualizar-historico btn btn-default">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+                <button class="adicionar-historico-lista btn btn-default pull-right">
+                    <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
+                </button>
+            </div>
         </div>
     </div>
 </template>

@@ -28,4 +28,8 @@ Template.historicoCompras.events({
     'click .visualizar-historico'() {
         Template.instance().state.set('atualizarVisualizacaoHistorico', this.minhaLista);
     },
+
+    'click .adicionar-historico-lista'() {
+        Meteor.call('lista_compras.insertByHistorico', this.minhaLista);
+    },
 });
