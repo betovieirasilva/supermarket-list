@@ -13,8 +13,10 @@ if (Meteor.isServer) {
 
 Meteor.methods({
     'usuarios.insert'(usuario) {
-        //check(nomeUsuario, String);
-        //check(userId, String);
+        check(usuario, {
+            userId: String,
+            nomeUsuario: String
+        });
 
         const usuarioList = Usuarios.find({usuarioId : usuario.userId}).fetch();//retorna um vetor
 
