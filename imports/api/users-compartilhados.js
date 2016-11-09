@@ -15,11 +15,23 @@ Meteor.methods({
     'usuarios_compartilhados.compartilhar'(userId) {
         check(userId, String);
 
-        console.log('userId: ' + userId + " this._id: " + this.userId);
-
         UsuariosCompartilhados.insert({
             owner: this.userId,
             usuarioId: userId
         });
-    }
+    },
+
+    'usuarios_compartilhados.remover'(userId) {
+        check(userId, String);
+
+        //- remove sem considerar a chave
+        //- workhound: https://github.com/meteor/meteor/issues/4142
+        //  -- owner: {$eq: this.userId} não funciona no mini mongo
+        UsuariosCompartilhados.remove(
+            {
+                owner: {$not:{$ne: this.userId}},
+                usuarioId: {$not:{$ne: userId}}
+            }
+        );
+    },
 });
