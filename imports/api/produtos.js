@@ -8,7 +8,8 @@ export const Produtos = new Mongo.Collection('produtos');
 if (Meteor.isServer) {
     //filtra os dados que poderão ser exibidos no cliente. Sem esta configuração nenhum resultado é exibido
     Meteor.publish('produtos', function produtosPublication() {
-        return  Produtos.find({ usuarioId: this.userId });
+        var filter = filterMyUsers(this.userId);
+        return  Produtos.find({ usuarioId: {$in: filter} });
     });
 }
 

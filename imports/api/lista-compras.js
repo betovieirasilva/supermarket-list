@@ -14,7 +14,8 @@ export const ListaCompras = new Mongo.Collection('lista_compras');
 if (Meteor.isServer) {
     //filtra os dados que poderão ser exibidos no cliente. Sem esta configuração nenhum resultado é exibido
     Meteor.publish('lista_compras', function listaComprasPublication() {
-        return  ListaCompras.find({ usuarioId: this.userId });
+        var filter = filterMyUsers(this.userId);
+        return  ListaCompras.find({ usuarioId: {$in: filter} });
     });
 }
 

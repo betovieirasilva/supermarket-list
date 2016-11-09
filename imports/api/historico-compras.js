@@ -13,7 +13,8 @@ export const HistoricoCompras = new Mongo.Collection('historico_compras');
 if (Meteor.isServer) {
     //filtra os dados que poderão ser exibidos no cliente. Sem esta configuração nenhum resultado é exibido
     Meteor.publish('historico_compras', function historicoComprasPublication() {
-        return  HistoricoCompras.find({ usuarioId: this.userId });
+        var filter = filterMyUsers(this.userId);
+        return  HistoricoCompras.find({ usuarioId: {$in: filter} });
     });
 }
 
