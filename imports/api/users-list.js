@@ -7,7 +7,7 @@ export const Usuarios = new Mongo.Collection('usuarios');
 if (Meteor.isServer) {
     //filtra os dados que poderão ser exibidos no cliente. Sem esta configuração nenhum resultado é exibido
     Meteor.publish('usuarios', function usuariosPublication() {
-        return  Usuarios.find({});
+        return  Usuarios.find({usuarioId: {$ne: this.userId}});
     });
 }
 
