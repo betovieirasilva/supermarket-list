@@ -1,12 +1,10 @@
-/**
- * Created by gilberto on 02/06/16.
- */
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 import { Produtos } from './produtos.js';
 import { HistoricoCompras } from './historico-compras.js';
+import { UsuariosCompartilhados } from './users-compartilhados.js';
 
 export const ListaCompras = new Mongo.Collection('lista_compras');
 
@@ -60,9 +58,6 @@ Meteor.methods({
         }
     },
 
-
-
-
     'lista_compras.remove'(listaComprasId) {
         check(listaComprasId, String);
 
@@ -90,7 +85,24 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        const minhaLista = ListaCompras.find({ usuarioId: this.userId }).fetch();
+        //var filter = filterMyUsers(this.userId);
+        //workhound: Exception while simulating the effect of invoking 'lista_compras.fecharLista' ReferenceError: filterMyUsers is not defined
+        const userId = this.userId;
+        const sharedWithOthers = UsuariosCompartilhados.find({owner: userId}, {fields: {'usuarioId':1}}).fetch();//retorna um vetor
+        const sharedWithMe = UsuariosCompartilhados.find({usuarioId: userId}, {fields: {'owner':1}}).fetch();//retorna um vetor
+
+        var filter = [];
+        filter.push(userId);
+        for(k in sharedWithOthers) {
+            filter.push(sharedWithOthers[k].usuarioId);
+        }
+
+        for(k in sharedWithMe) {
+            filter.push(sharedWithMe[k].owner);
+        }
+
+
+        const minhaLista = ListaCompras.find({ usuarioId: {$in: filter} }).fetch();
 
         Meteor.call('historico_compras.insert', minhaLista);
 

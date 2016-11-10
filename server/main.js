@@ -36,7 +36,7 @@ Accounts.onLogin(function(user) {
 * */
 filterMyUsers = function(userId){
     const sharedWithOthers = UsuariosCompartilhados.find({owner: userId}, {fields: {'usuarioId':1}}).fetch();//retorna um vetor
-    const sharedForMe = UsuariosCompartilhados.find({usuarioId: userId}, {fields: {'owner':1}}).fetch();//retorna um vetor
+    const sharedWithMe = UsuariosCompartilhados.find({usuarioId: userId}, {fields: {'owner':1}}).fetch();//retorna um vetor
 
     var filter = [];
     filter.push(userId);
@@ -44,8 +44,8 @@ filterMyUsers = function(userId){
         filter.push(sharedWithOthers[k].usuarioId);
     }
 
-    for(k in sharedForMe) {
-        filter.push(sharedForMe[k].owner);
+    for(k in sharedWithMe) {
+        filter.push(sharedWithMe[k].owner);
     }
 
     return filter;
