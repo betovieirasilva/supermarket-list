@@ -1,94 +1,73 @@
 <template name="lista">
-    TODO: Minha lista
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Lista do Supermercado
-        </div>
-        <div class="panel-body">
-            <div class="form-group">
+    <div class="card">
+        <!--<div class="card-header">Lista do Supermercado</div>-->
+        <div class="card-content">
+            <div class="card-content-inner">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <span class="text">Items na Lista</span>
-                                </div>
+                    <div class="col-33">
+                        Items na Lista <span class="badge">{{numeroItemsListaCompras}}</span>
+                    </div>
+                    <div class="col-33">
+                        Comprados <span class="badge">{{numeroItemsComprados}}</span>
+                    </div>
+                    <div class="col-33">
+                        <label class="hide-items-comprados label-checkbox item-content">
+                            <input type="checkbox" name="my-checkbox" value="Ocultar Comprados" />
+                            <div class="item-media">
+                                <i class="icon icon-form-checkbox"></i>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <span class="text">Comprados</span>
-                                </div>
+                            <div class="item-inner">
+                                <div class="item-title">Ocultar Comprados</div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <span class="text">Ocultar Comprados</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <span class="text">{{numeroItemsListaCompras}}</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <span class="text">{{numeroItemsComprados}}</span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="hide-items-comprados">
-                                        <input type="checkbox" />
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        {{#if currentUser}}
-                            <form class="new-produto">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <div class="form-group">
-                                            <input type="text" name="itemCompra" id="itemCompra" class="form-control" placeholder="Escreva o nome de um produto">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="card-footer">Footer</div>-->
+    </div>
+    {{#if currentUser}}
+        <form class="new-produto">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-content-inner">
+                        <div class="list-block">
+                            <ul>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Produto</div>
+                                            <div class="item-input">
+                                                <input type="text" name="itemCompra" id="itemCompra" placeholder="Escreva o nome de um produto">
+                                            </div>
                                         </div>
+                                        <div class="item-media"><button class="button button-round">Adicionar</button></div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-default">
-                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        {{/if}}
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Items
-                            </div>
-                            <div class="panel-body">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            {{#each listaCompras}}
-                                                {{> itemCompra}}
-                                            {{/each}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="form-actions">
-                <button class="fechar-lista-compra btn btn-primary btn-large">
-                    <i class="fa fa-floppy-o icon-white"></i> Fechar Lista de Compra
-                </button>
+        </form>
+    {{/if}}
+    <div class="card">
+        <div class="card-content">
+            <div class="card-content-inner">
+                <div class="list-block contacts-block">
+                    <div class="list-group">
+                        <ul>
+                            <li class="list-group-title">Items</li>
+                            {{#each listaCompras}}
+                                {{> itemCompra}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="card-footer">
+            <button class="fechar-lista-compra button button-round">Fechar Lista de Compra</button>
+        </div>
     </div>
-
-
 </template>
-
-
