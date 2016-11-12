@@ -6,8 +6,6 @@
         <div class="view view-main">
             <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
             <div class="pages navbar-fixed toolbar-fixed">
-                <!-- TODO-->
-                <!--{{> loginButtons}}-->
                 {{> myForm}}
             </div>
         </div>
@@ -48,6 +46,9 @@
         <!-- Scrollable page content -->
         <div class="page-content">
             <p>Page content goes here</p>
+            <!-- TODO: -->
+            {{> loginButtons}}
+            <!-- #end TODOS -->
             {{#if currentMenuLista}}
                 {{> lista}}
             {{/if}}
