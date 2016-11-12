@@ -29,16 +29,16 @@
         <div class="toolbar tabbar">
             <div class="toolbar-inner">
                 {{#if currentUser}}
-                    <a href="#tab1" class="tab-link active" id="menu-lista">
+                    <a href="#tab1" class="tab-link {{#if currentMenuLista}}active{{/if}}" id="menu-lista">
                         <i class="icon demo-icon-1">Lista</i>
                     </a>
-                    <a href="#tab2" class="tab-link" id="menu-produto">
+                    <a href="#tab2" class="tab-link {{#if currentMenuProduto}}active{{/if}}" id="menu-produto">
                         <i class="icon demo-icon-2">Produto</i>
                     </a>
-                    <a href="#tab3" class="tab-link" id="menu-historico">
+                    <a href="#tab3" class="tab-link {{#if currentMenuHistorico}}active{{/if}}" id="menu-historico">
                         <i class="icon demo-icon-3">Últimas Compras</i>
                     </a>
-                    <a href="#tab4" class="tab-link" id="menu-compartilhar-user">
+                    <a href="#tab4" class="tab-link {{#if currentMenuCompartilharUser}}active{{/if}}" id="menu-compartilhar-user">
                         <i class="icon demo-icon-4">Compartilhar</i>
                     </a>
                 {{/if}}
