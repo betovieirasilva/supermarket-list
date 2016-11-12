@@ -1,38 +1,33 @@
 <template name="listaProdutos">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Histórico de Produtos Comprados
-        </div>
-        <div class="panel-body">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-12">
-                        {{#each listaProdutos}}
-                            {{> produto}}
-                        {{/each}}
-                    </div>
-                </div>
+    Meus Produtos
+    <div class="page-content contacts-content">
+        <div class="list-block contacts-block">
+            <div class="list-group">
+                <ul>
+                    <li class="list-group-title"></li>
+                    {{#each listaProdutos}}
+                        {{> produto}}
+                    {{/each}}
+                </ul>
             </div>
         </div>
     </div>
 </template>
 
 <template name="produto">
-    <div class="row">
-        <div class="col-md-9">
-            <div class="form-group">
-                <span class="text">{{nome}}</span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <button class="delete-produto btn btn-default">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            </button>
-            {{#if naoExisteListaCompras}}
-                <button class="incluir-produto-lista btn btn-default">
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    <li>
+        <div class="item-content">
+            <div class="item-inner">
+                <div class="item-title">{{nome}}</div>
+                <button class="delete-produto btn btn-default">
+                    <!--<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>-->
                 </button>
-            {{/if}}
+                {{#if naoExisteListaCompras}}
+                    <button class="incluir-produto-lista btn btn-default">
+                        <!--<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>-->
+                    </button>
+                {{/if}}
+           </div>
         </div>
-    </div>
+    </li>
 </template>

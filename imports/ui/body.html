@@ -1,53 +1,53 @@
-<body>
-    <div data-role="navigation">
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!--<a class="navbar-brand" href="#"> <img src="assets/img/logo.png" width="45" style="width: 45px;"> Sistema Interno</a>-->
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <!--<li>-->
-                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
-                                <!--<i class="fa fa-user"></i>-->
-                                <!--Gilberto Vieira</a>-->
-                            <!--<ul class="dropdown-menu dropdown-padding">-->
-                                <!--<li>-->
-                                    <!--<p>-->
-                                        <!--Opção-->
-                                    <!--</p>-->
-                                <!--</li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
-                        {{> loginButtons}}
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-    </div>
-    {{> myForm}}
-    <footer class="footer">
-        <div class="container text-center">
-            <div>©Supermarket List - Todos os direitos reservados</div>
+<!-- with framework 7-->
+<body class="theme-orange">
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-fixed toolbar-fixed">
+                <!-- TODO-->
+                <!--{{> loginButtons}}-->
+                {{> myForm}}
+            </div>
         </div>
-    </footer>
+    </div>
 </body>
 
+
 <template name="myForm">
-    <div class="container">
-        {{#if currentUser}}
-            <ul class="nav nav-pills">
-                <li role="presentation" class="{{#if currentMenuLista}}active{{/if}}" id="menu-lista"><a href="#">Lista</a></li>
-                <li role="presentation" class="{{#if currentMenuProduto}}active{{/if}}" id="menu-produto"><a href="#">Produtos</a></li>
-                <li role="presentation" class="{{#if currentMenuHistorico}}active{{/if}}" id="menu-historico"><a href="#">Últimas Compras</a></li>
-                <li role="presentation" class="{{#if currentMenuCompartilharUser}}active{{/if}}" id="menu-compartilhar-user"><a href="#">Compartilhar</a></li>
-            </ul>
+    <!-- Page, "data-page" contains page name -->
+    <div data-page="index" class="page">
+        <!-- Top Navbar. In Material theme it should be inside of the page-->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="center">Supermarket List</div>
+            </div>
+        </div>
+
+        <!-- Toolbar. In Material theme it should be inside of the page-->
+        <div class="toolbar tabbar">
+            <div class="toolbar-inner">
+                {{#if currentUser}}
+                    <a href="#tab1" class="tab-link active" id="menu-lista">
+                        <i class="icon demo-icon-1">Lista</i>
+                    </a>
+                    <a href="#tab2" class="tab-link" id="menu-produto">
+                        <i class="icon demo-icon-2">Produto</i>
+                    </a>
+                    <a href="#tab3" class="tab-link" id="menu-historico">
+                        <i class="icon demo-icon-3">Últimas Compras</i>
+                    </a>
+                    <a href="#tab4" class="tab-link" id="menu-compartilhar-user">
+                        <i class="icon demo-icon-4">Compartilhar</i>
+                    </a>
+                {{/if}}
+            </div>
+        </div>
+
+        <!-- Scrollable page content -->
+        <div class="page-content">
+            <p>Page content goes here</p>
             {{#if currentMenuLista}}
                 {{> lista}}
             {{/if}}
@@ -60,7 +60,6 @@
             {{#if currentMenuCompartilharUser}}
                 {{> compartilharUser}}
             {{/if}}
-        {{/if}}
+        </div>
     </div>
 </template>
-
