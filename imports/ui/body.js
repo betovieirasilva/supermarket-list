@@ -21,6 +21,7 @@ import './lista.js';
 import './produto.js';
 import './historico.js';
 import './compartilhar-user.js';
+import './login.js';
 
 //Aqui você diz qual é o HTML que o JS será utilizado
 import './body.html';
