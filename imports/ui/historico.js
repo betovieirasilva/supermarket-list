@@ -30,6 +30,7 @@ Template.historicoCompras.events({
     },
 
     'click .adicionar-historico-lista'() {
-        Meteor.call('lista_compras.insertByHistorico', this.minhaLista);
+        const minhaLista = Template.instance().state.get('atualizarVisualizacaoHistorico');
+        Meteor.call('lista_compras.insertByHistorico', minhaLista);
     },
 });
