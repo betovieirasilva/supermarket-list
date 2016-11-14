@@ -32,16 +32,16 @@ Template.myForm.onCreated(function listaOnCreated() {
 
 Template.myForm.helpers({
 
-    currentMenuProduto : function() {
+    currentMenuLista : function() {
         const instance = Template.instance();
-        if (instance.state.get('currentMenu') === 'produto'){
+        if (instance.state.get('currentMenu') === 'lista'){
             return true;
         }
         return false;
     },
-    currentMenuLista : function() {
+    currentMenuProduto : function() {
         const instance = Template.instance();
-        if (instance.state.get('currentMenu') === 'lista'){
+        if (instance.state.get('currentMenu') === 'produto'){
             return true;
         }
         return false;
@@ -60,6 +60,22 @@ Template.myForm.helpers({
         }
         return false;
     },
+    percentualHighlightMenu : function(){
+        const instance = Template.instance();
+        if (instance.state.get('currentMenu') === 'lista'){
+            return 0;
+        }
+        if (instance.state.get('currentMenu') === 'produto'){
+            return 100;
+        }
+        if (instance.state.get('currentMenu') === 'historico'){
+            return 200;
+        }
+        if (instance.state.get('currentMenu') === 'compartilhar-user'){
+            return 300;
+        }
+        return 0;
+    }
 });
 
 Template.myForm.events({

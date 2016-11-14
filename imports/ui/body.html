@@ -26,20 +26,19 @@
         <!-- Toolbar. In Material theme it should be inside of the page-->
         <div class="toolbar tabbar">
             <div class="toolbar-inner">
-                {{#if currentUser}}
-                    <a href="#tab1" class="tab-link {{#if currentMenuLista}}active{{/if}}" id="menu-lista">
-                        <i class="icon demo-icon-1">Lista</i>
-                    </a>
-                    <a href="#tab2" class="tab-link {{#if currentMenuProduto}}active{{/if}}" id="menu-produto">
-                        <i class="icon demo-icon-2">Produto</i>
-                    </a>
-                    <a href="#tab3" class="tab-link {{#if currentMenuHistorico}}active{{/if}}" id="menu-historico">
-                        <i class="icon demo-icon-3">Últimas Compras</i>
-                    </a>
-                    <a href="#tab4" class="tab-link {{#if currentMenuCompartilharUser}}active{{/if}}" id="menu-compartilhar-user">
-                        <i class="icon demo-icon-4">Compartilhar</i>
-                    </a>
-                {{/if}}
+                <a href="#tab1" class="tab-link {{#if currentMenuLista}}active{{/if}}" id="menu-lista">
+                    <i class="icon demo-icon-1">Lista</i>
+                </a>
+                <a href="#tab2" class="tab-link {{#if currentMenuProduto}}active{{/if}}" id="menu-produto">
+                    <i class="icon demo-icon-2">Produto</i>
+                </a>
+                <a href="#tab3" class="tab-link {{#if currentMenuHistorico}}active{{/if}}" id="menu-historico">
+                    <i class="icon demo-icon-3">Últimas Compras</i>
+                </a>
+                <a href="#tab4" class="tab-link {{#if currentMenuCompartilharUser}}active{{/if}}" id="menu-compartilhar-user">
+                    <i class="icon demo-icon-4">Compartilhar</i>
+                </a>
+                <span class="tab-link-highlight" style="width: 25%; transform: translate3d({{percentualHighlightMenu}}%, 0px, 0px);"></span>
             </div>
         </div>
 
@@ -47,7 +46,7 @@
         <div class="page-content">
             <!--<p>Page content goes here</p>-->
             <!-- TODO: -->
-            <!--{{> loginButtons}}-->
+            {{> loginButtons}}
             <!-- #end TODOS -->
             {{#if currentMenuLista}}
                 {{> lista}}
