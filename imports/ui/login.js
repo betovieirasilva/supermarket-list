@@ -5,10 +5,13 @@ import './login.html';
 
 
 Template.loginUsuario.onCreated(function listaOnCreated() {
-    //Meteor.subscribe('produtos');
+    this.state = new ReactiveDict();
 });
 
 Template.loginUsuario.helpers({
+    loginCadastrarUsuario() {
+        return Template.instance().state.get('loginCadastrarUsuario');
+    },
 });
 
 Template.loginUsuario.events({
@@ -17,6 +20,24 @@ Template.loginUsuario.events({
         const target = event.target;
         const usuario = target.username.value;
         const senha = target.password.value;
+
+        if (target.passwordConfirm !== null && target.passwordConfirm !== undefined) {
+            const confirmacaoSenha = target.passwordConfirm.value;
+            target.passwordConfirm.value = '';
+
+            if (senha !== confirmacaoSenha) {
+                //TODO:
+            } else {
+                Accounts.createUser({
+                    username: usuario,
+                    password: senha
+                });
+            }
+        }
         Meteor.loginWithPassword(usuario, senha);
     },
+    'click .cadastrar-usuario'(event, instance) {
+        Template.instance().state.set('loginCadastrarUsuario', true);
+    },
+
 });

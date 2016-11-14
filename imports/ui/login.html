@@ -22,12 +22,29 @@
                                     </div>
                                 </div>
                             </li>
+                            {{#if loginCadastrarUsuario}}
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Confirme a Senha</div>
+                                        <div class="item-input">
+                                            <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirmação da senha">
+                                        </div>
+                                    </div>
+                                </li>
+                            {{/if}}
                         </ul>
                     </div>
                     <div class="list-block">
-                        <button class="button button-round">
-                            Entrar
-                        </button>
+                        <div class="row">
+                            <button class="button button-round">
+                                Entrar
+                            </button>
+                            {{#unless loginCadastrarUsuario}}
+                            <button type="button" class="cadastrar-usuario button button-round">
+                                Cadastrar-me
+                            </button>
+                            {{/unless}}
+                        </div>
                     </div>
                 </form>
             </div>

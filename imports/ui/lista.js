@@ -16,7 +16,6 @@ Template.lista.onCreated(function listaOnCreated() {
     this.state = new ReactiveDict();
     //sem o subscribe os dados não são publicados para o cliente
     Meteor.subscribe('lista_compras');
-    //Meteor.subscribe('produtos');
 });
 
 Template.lista.helpers({
