@@ -1,28 +1,23 @@
 <template name="itemCompra">
-    <li>
-        <div class="item-content">
-            <div class="item-media">
-                <i class="icon my-icon"></i>
+    <div class="item-content">
+        <div class="item-inner">
+            <div class="item-title">
+                {{produto}}
             </div>
-            <div class="item-inner">
-                <div class="item-title">
-                    {{produto}}
-                </div>
-                <div class="item-after">
-                    <button class="toggle-comprar button button-round">
-                        {{#if comprado}}
-                            Comprado
-                        {{else}}
-                            Comprar
-                        {{/if}}
-                    </button>
-                    {{#if isOwner}}
-                        <button class="delete button button-round">
-                            Excluir
-                        </button>
+            <div class="item-after">
+                <button class="toggle-comprar button button-round">
+                    {{#if comprado}}
+                        Comprado
+                    {{else}}
+                        Comprar
                     {{/if}}
-                </div>
+                </button>
+                {{#if isOwner}}
+                    <button class="delete button button-round">
+                        Excluir
+                    </button>
+                {{/if}}
             </div>
         </div>
-    </li>
+    </div>
 </template>

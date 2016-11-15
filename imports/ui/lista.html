@@ -1,6 +1,5 @@
 <template name="lista">
     <div class="card">
-        <!--<div class="card-header">Lista do Supermercado</div>-->
         <div class="card-content">
             <div class="card-content-inner">
                 <div class="row">
@@ -24,7 +23,6 @@
                 </div>
             </div>
         </div>
-        <!--<div class="card-footer">Footer</div>-->
     </div>
     {{#if currentUser}}
         <form class="new-produto">
@@ -36,7 +34,7 @@
                                 <li>
                                     <div class="item-content">
                                         <div class="item-inner">
-                                            <div class="item-title label">Produto</div>
+                                            <!--<div class="item-title label">Produto</div>-->
                                             <div class="item-input">
                                                 <input type="text" name="itemCompra" id="itemCompra" placeholder="Escreva o nome de um produto">
                                             </div>
@@ -57,7 +55,6 @@
                 <div class="list-block contacts-block">
                     <div class="list-group">
                         <ul>
-                            <li class="list-group-title">Items</li>
                             {{#each listaCompras}}
                                 {{> itemCompra}}
                             {{/each}}
