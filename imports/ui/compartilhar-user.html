@@ -5,11 +5,9 @@
             <div class="card-content-inner">
                 <div class="list-block contacts-block">
                     <div class="list-group">
-                        <ul>
-                            {{#each listaUsuariosNaoCompartihados}}
-                                {{> itemUsuario}}
-                            {{/each}}
-                        </ul>
+                        {{#each listaUsuariosNaoCompartihados}}
+                            {{> itemUsuario}}
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -21,11 +19,9 @@
             <div class="card-content-inner">
                 <div class="list-block contacts-block">
                     <div class="list-group">
-                        <ul>
-                            {{#each listaUsuariosCompartihados}}
-                                {{> itemUsuarioCompartilhado}}
-                            {{/each}}
-                        </ul>
+                        {{#each listaUsuariosCompartihados}}
+                            {{> itemUsuarioCompartilhado}}
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -34,37 +30,27 @@
 </template>
 
 <template name="itemUsuario">
-    <li>
-        <div class="item-content">
-            <div class="item-media">
-                <i class="icon my-icon"></i>
-            </div>
-            <div class="item-inner">
-                <div class="item-title">{{username}}</div>
-                <div class="item-after">
-                    <button class="compartilhar-com-usuario button button-round">
-                        Compartilhar
-                    </button>
-                </div>
+    <div class="item-content">
+        <div class="item-inner">
+            <div class="item-title">{{username}}</div>
+            <div class="item-after">
+                <button class="compartilhar-com-usuario button button-round">
+                    Compartilhar
+                </button>
             </div>
         </div>
-    </li>
+    </div>
 </template>
 
 <template name="itemUsuarioCompartilhado">
-    <li>
-        <div class="item-content">
-            <div class="item-media">
-                <i class="icon my-icon"></i>
-            </div>
-            <div class="item-inner">
-                <div class="item-title">{{username}}</div>
-                <div class="item-after">
-                    <button class="remover-compartilhamento button button-round">
-                        Remover
-                    </button>
-                </div>
+    <div class="item-content">
+        <div class="item-inner">
+            <div class="item-title">{{username}}</div>
+            <div class="item-after">
+                <button class="remover-compartilhamento button button-round">
+                    Remover
+                </button>
             </div>
         </div>
-    </li>
+    </div>
 </template>

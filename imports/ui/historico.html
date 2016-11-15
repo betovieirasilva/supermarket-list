@@ -1,15 +1,12 @@
 <template name="historicoCompras">
     <div class="card">
-        <div class="card-header">Histórico de Compras</div>
         <div class="card-content">
             <div class="card-content-inner">
                 <div class="list-block contacts-block">
                     <div class="list-group">
-                        <ul>
-                            {{#each listaHistoricoCompras}}
-                                {{> itemHistorico}}
-                            {{/each}}
-                        </ul>
+                        {{#each listaHistoricoCompras}}
+                            {{> itemHistorico}}
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -37,36 +34,26 @@
 </template>
 
 <template name="itemHistorico">
-    <li>
-        <div class="item-content">
-            <div class="item-media">
-                <i class="icon my-icon"></i>
-            </div>
-            <div class="item-inner">
-                <div class="item-title">{{formatDate dataCriacao}}</div>
-                <div class="item-after">
-                    <button class="visualizar-historico button button-round">
-                        Visualizar
-                    </button>
-                </div>
+    <div class="item-content">
+        <div class="item-inner">
+            <div class="item-title">{{formatDate dataCriacao}}</div>
+            <div class="item-after">
+                <button class="visualizar-historico button button-round">
+                    Visualizar
+                </button>
             </div>
         </div>
-    </li>
+    </div>
 </template>
 
 
 <template name="itemSelecionado">
-    <li>
-        <div class="item-content">
-            <div class="item-media">
-                <i class="icon my-icon"></i>
-            </div>
-            <div class="item-inner">
-                <div class="item-title">{{produto}}</div>
-                <div class="item-after">
-                    {{#if comprado}}Comprado{{/if}}
-                </div>
+    <div class="item-content">
+        <div class="item-inner">
+            <div class="item-title">{{produto}}</div>
+            <div class="item-after">
+                {{#if comprado}}Comprado{{/if}}
             </div>
         </div>
-    </li>
+    </div>
 </template>
